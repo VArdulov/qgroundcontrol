@@ -36,6 +36,14 @@ linux-g++ | linux-g++-64 {
     error(Unsupported build type)
 }
 
+# Check for Ubuntu to fix nativeMenubar
+unix {
+    IS_UBUNTU = $$system(cat /proc/version | grep -i ubuntu)
+    !isEmpty(IS_UBUNTU){
+        message("Detected Ubuntu, disabling native menubar")
+        DEFINES += UBUNTU_MENUBAR
+    }
+}
 # Installer configuration
 
 installer {

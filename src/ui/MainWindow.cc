@@ -140,6 +140,9 @@ MainWindow::MainWindow(QWidget *parent):
     connect(menuActionHelper, SIGNAL(needToShowDockWidget(QString,bool)),SLOT(showDockWidget(QString,bool)));
     //TODO:  move protocol outside UI
     connect(mavlink, SIGNAL(protocolStatusMessage(QString,QString)), this, SLOT(showCriticalMessage(QString,QString)), Qt::QueuedConnection);
+    #ifdef UBUNTU_MENUBAR
+        this->menuBar()->setNativeMenuBar(false);;
+    #endif
     loadSettings();
 }
 
