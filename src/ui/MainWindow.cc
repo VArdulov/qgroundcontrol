@@ -140,9 +140,10 @@ MainWindow::MainWindow(QWidget *parent):
     connect(menuActionHelper, SIGNAL(needToShowDockWidget(QString,bool)),SLOT(showDockWidget(QString,bool)));
     //TODO:  move protocol outside UI
     connect(mavlink, SIGNAL(protocolStatusMessage(QString,QString)), this, SLOT(showCriticalMessage(QString,QString)), Qt::QueuedConnection);
-    #ifdef UBUNTU_MENUBAR
-        this->menuBar()->setNativeMenuBar(false);;
-    #endif
+#ifdef UBUNTU_MENUBAR
+
+    this->menuBar()->setNativeMenuBar(false);;
+#endif
     loadSettings();
 }
 
@@ -190,7 +191,9 @@ void MainWindow::init()
     ui.setupUi(this);
     hide();
     menuActionHelper->setMenu(ui.menuTools);
-
+#ifdef UBUNTU_MENUBAR
+    this->menuBar()->setNativeMenuBar(false);;
+#endif
     // We only need this menu if we have more than one system
     //    ui.menuConnected_Systems->setEnabled(false);
 
