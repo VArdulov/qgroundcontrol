@@ -416,8 +416,10 @@ QTreeWidgetItem* QGCParamWidget::updateParameterDisplay(int compId, QString para
         paramItem->setBackground(0, Qt::NoBrush);
         paramItem->setBackground(1, Qt::NoBrush);
 
-        paramItem->setTextColor(0, QGC::colorDarkWhite);
-        paramItem->setTextColor(1, QGC::colorDarkWhite);
+        //Commented out for Style-Sheet to set color
+        //fixes unreadability of parameters in outdoor mode
+        //paramItem->setTextColor(0, QGC::colorDarkWhite);
+        //paramItem->setTextColor(1, QGC::colorDarkWhite);
 
         if (paramItem == tree->currentItem()) {
             //need to unset current item to clear highlighting (green by default)
